@@ -1,17 +1,50 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Player
 {
-    public class PlayerMovement : MonoBehaviour
+    // Taken from https://unity3d.com/learn/tutorials/topics/2d-game-creation/intro-and-session-goals
+    public class PlayerMovement : PlayerMovementPhysics
     {
-        private void Start()
+        public float maxSpeed = 7;
+        public float jumpTakeOffSpeed = 7;
+
+        private SpriteRenderer spriteRenderer;
+        //private Animator animator;
+
+        void Awake()
         {
-            
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            //animator = GetComponent<Animator>();
         }
 
-        private void Update()
+        protected override void ComputeVelocity()
         {
-            
+            Vector2 move = Vector2.zero;
+
+            move.x = Input.GetAxis("Horizontal");
+
+            if (Input.GetButtonDown("Jump") && grounded)
+            {
+                velocity.y = jumpTakeOffSpeed;
+            }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * 0.5f;
+                }
+            }
+
+            bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+            if (flipSprite)
+            {
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+            }
+
+            //animator.SetBool("grounded", grounded);
+            //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+
+            targetVelocity = move * maxSpeed;
         }
     }
 }
