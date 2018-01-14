@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Background
   - World
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - World
-  - 
+  - Enemy
   - 
   - 
   - 
