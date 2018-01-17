@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Enemy
 {
     public class Enemy : MonoBehaviour
     {
@@ -12,6 +12,11 @@ namespace Assets.Scripts
         private void Update()
         {
             
+        }
+
+        public void Hit(Vector2 hitPoint, int damageAmount)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
