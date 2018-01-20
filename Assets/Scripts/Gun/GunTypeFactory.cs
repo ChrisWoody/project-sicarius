@@ -14,7 +14,7 @@
             GunType.Create(Firerate.Slow, Damage.Low, spread: true, autoFiring: false, shootThroughEverything: true),
         };
 
-        private static int _currentGunTypeIndex = 3;
+        private static int _currentGunTypeIndex = -1;
 
         public static GunType GetNextGunType()
         {

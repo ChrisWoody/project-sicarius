@@ -1,17 +1,22 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
-public class PlayerRotateArm : MonoBehaviour
+namespace Assets.Scripts.Player
 {
-    //public Transform Crosshair;
-
-    private void Update()
+    public class PlayerRotateArm : MonoBehaviour
     {
-        var crosshairPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        crosshairPos.z = transform.position.z;
+        public Transform Crosshair;
 
-        var dir = transform.position - crosshairPos;
-        transform.up = dir.normalized;
+        private void Update()
+        {
+            var crosshairPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            crosshairPos.z = transform.position.z;
 
-        //Crosshair.position = crosshairPos;
+            var dir = transform.position - crosshairPos;
+            transform.up = dir.normalized;
+            if (Input.GetKeyDown(KeyCode.Escape))
+                EditorApplication.isPaused = true;
+            Crosshair.position = crosshairPos;
+        }
     }
 }

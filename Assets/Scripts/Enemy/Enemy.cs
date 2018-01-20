@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Gun;
+using UnityEngine;
 
 namespace Assets.Scripts.Enemy
 {
     public class Enemy : MonoBehaviour
     {
+        private int _health = 100;
+
         private void Start()
         {
             
@@ -14,9 +18,20 @@ namespace Assets.Scripts.Enemy
             
         }
 
-        public void Hit(Vector2 hitPoint, int damageAmount)
+        public void Hit(Vector2 hitPoint, Damage damage)
         {
-            throw new System.NotImplementedException();
+            _health -= DamageMap[damage];
+            if (_health > 0)
+                return;
+
+            Destroy(gameObject);
         }
+
+        private static readonly Dictionary<Damage, int> DamageMap = new Dictionary<Damage, int>
+        {
+            {Damage.Low, 15},
+            {Damage.Medium, 40},
+            {Damage.High, 100},
+        };
     }
 }

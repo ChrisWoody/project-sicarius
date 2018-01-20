@@ -6,6 +6,9 @@ namespace Assets.Scripts.Gun
 {
     public class Gun : MonoBehaviour
     {
+        public GunShotTrail GunShotTrail;
+        public GunShotImpact GunShotImpact;
+
         public GunType CurrentGunType { get; private set; }
 
         private float _cooldownElapsed;
@@ -16,6 +19,7 @@ namespace Assets.Scripts.Gun
         {
             //Cursor.lockState = CursorLockMode.Confined;
             //Cursor.visible = false;
+            UpdateCurrentGunType();
         }
 
         private void Update()
@@ -29,6 +33,9 @@ namespace Assets.Scripts.Gun
                     _coolingDown = false;
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+                UpdateCurrentGunType();
 
             if (!_coolingDown && (CurrentGunType.HasAutoFire || Input.GetButtonDown("Fire1")))
             {
@@ -62,8 +69,8 @@ namespace Assets.Scripts.Gun
                     {
                         if (hit.collider)
                         {
-                            ShotImpact(hit);
-                            hit.transform.GetComponent<Enemy.Enemy>()?.Hit(hit.point, CurrentGunType.DamageAmount);
+                            ShowGunShotImpact(hit);
+                            hit.transform.GetComponent<Enemy.Enemy>()?.Hit(hit.point, CurrentGunType.Damage);
                         }
                     }
 
@@ -72,13 +79,13 @@ namespace Assets.Scripts.Gun
                 }
                 else
                 {
-                    var hit = Physics2D.Raycast(firePos, dirToFire, 100f, LayerMask.GetMask("Platform", "Enemy"));
+                    var hit = Physics2D.Raycast(firePos, dirToFire, 100f, LayerMask.GetMask("World", "Enemy"));
                     Vector2 pointToFireTo;
                     if (hit.collider)
                     {
                         pointToFireTo = hit.point;
-                        ShotImpact(hit);
-                        hit.transform.GetComponent<Enemy.Enemy>()?.Hit(hit.point, CurrentGunType.DamageAmount);
+                        ShowGunShotImpact(hit);
+                        hit.transform.GetComponent<Enemy.Enemy>()?.Hit(hit.point, CurrentGunType.Damage);
                     }
                     else
                     {
@@ -92,10 +99,9 @@ namespace Assets.Scripts.Gun
 
         private void UpdateCurrentGunType()
         {
-            //CurrentGunType = GunTypeFactory.GetNextGunType();
+            CurrentGunType = GunTypeFactory.GetNextGunType();
             _cooldownTimeout = CurrentGunType.Cooldown;
         }
-
 
         private void ShowMuzzleFlash(Vector3 dir, Vector3 shotStartPosition)
         {
@@ -107,25 +113,16 @@ namespace Assets.Scripts.Gun
             //Destroy(muzzleFlash.gameObject, 0.2f);
         }
 
-        private void ShowShotTrail(Vector3 shotStartPosition, Vector2 pointToFire, Assets.Scripts.Gun.Damage damage)
+        private void ShowShotTrail(Vector3 shotStartPos, Vector3 shotEndPos, Damage damage)
         {
-            //var shotTrail = Instantiate(ShotTrail);
-            //shotTrail.SetupShotTrail(shotStartPosition, pointToFire, DamageLineWidthMap[damage]);
+            var gunShotTrail = Instantiate(GunShotTrail);
+            gunShotTrail.SetupShotTrail(shotStartPos, shotEndPos, damage);
         }
 
-        private static readonly Dictionary<Damage, float> DamageLineWidthMap = new Dictionary<Damage, float>
+        private void ShowGunShotImpact(RaycastHit2D hit)
         {
-            {Damage.Low, 0.05f},
-            {Damage.Medium, 0.15f},
-            {Damage.High, 0.25f},
-        };
-
-        private void ShotImpact(RaycastHit2D hit)
-        {
-            //var ps = Instantiate(BulletImpact);
-            //ps.position = hit.point;
-            //ps.transform.up = hit.normal;
-            //Destroy(ps.gameObject, 1f);
+            var gunShotImpact = Instantiate(GunShotImpact);
+            gunShotImpact.Setup(hit);
         }
 
         //private void OnRequiredSoulsCollected()

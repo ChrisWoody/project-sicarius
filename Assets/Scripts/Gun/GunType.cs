@@ -6,7 +6,6 @@ namespace Assets.Scripts.Gun
     {
         public readonly float Cooldown;
         public readonly Damage Damage;
-        public readonly int DamageAmount;
         public readonly bool HasSpread;
         public readonly bool HasAutoFire;
         public readonly bool CanShootThroughEverything;
@@ -15,7 +14,6 @@ namespace Assets.Scripts.Gun
         {
             Cooldown = FirerateMap[firerate];
             Damage = damage;
-            DamageAmount = DamageMap[damage];
 
             HasSpread = spread;
             HasAutoFire = autoFiring;
@@ -33,13 +31,6 @@ namespace Assets.Scripts.Gun
             {Firerate.Slow, 0.75f},
             {Firerate.Medium, 0.25f},
             {Firerate.Fast, 0.1f},
-        };
-
-        private static readonly Dictionary<Damage, int> DamageMap = new Dictionary<Damage, int>
-        {
-            {Damage.Low, 15},
-            {Damage.Medium, 40},
-            {Damage.High, 100},
         };
     }
 }
