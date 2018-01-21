@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Game;
 using Assets.Scripts.Gun;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ namespace Assets.Scripts.Enemy
             if (_health > 0)
                 return;
 
+            GameController.NotifyEnemyKilled();
             Destroy(gameObject);
         }
 
