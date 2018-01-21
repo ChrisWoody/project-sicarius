@@ -6155,7 +6155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 617362655}
   - component: {fileID: 617362656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootingArm
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8868,7 +8868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 923924938}
   - component: {fileID: 923924939}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootingArmShoulder
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -12719,7 +12719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284366914}
   - component: {fileID: 1284366915}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -15189,7 +15189,7 @@ GameObject:
   - component: {fileID: 1540386496}
   - component: {fileID: 1540386502}
   - component: {fileID: 1540386503}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -16868,7 +16868,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1721448122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19284,7 +19284,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2003231527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

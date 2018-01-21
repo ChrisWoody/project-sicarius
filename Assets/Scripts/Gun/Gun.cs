@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Assets.Scripts.Enemy;
+﻿using UnityEngine;
+using Assets.Scripts.Game;
 
 namespace Assets.Scripts.Gun
 {
@@ -24,6 +23,9 @@ namespace Assets.Scripts.Gun
 
         private void Update()
         {
+            if (GameController.IsPlayerDead)
+                return;
+
             if (_coolingDown)
             {
                 _cooldownElapsed += Time.deltaTime;

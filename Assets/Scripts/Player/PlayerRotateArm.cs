@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using Assets.Scripts.Game;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -9,6 +10,9 @@ namespace Assets.Scripts.Player
 
         private void Update()
         {
+            if (GameController.IsPlayerDead)
+                return;
+
             var crosshairPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             crosshairPos.z = transform.position.z;
 

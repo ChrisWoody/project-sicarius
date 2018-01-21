@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Game;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -21,7 +22,6 @@ namespace Assets.Scripts.Player
         private SpriteRenderer _sr;
 
         private bool _facingRight = true;
-        private bool _dead;
 
         private void Awake()
         {
@@ -33,9 +33,9 @@ namespace Assets.Scripts.Player
             _sr = GetComponent<SpriteRenderer>();
         }
 
-        void Update()
+        private void Update()
         {
-            if (_dead)
+            if (GameController.IsPlayerDead)
                 return;
 
             if (!_jump)
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
-            if (_dead)
+            if (GameController.IsPlayerDead)
                 return;
 
             ConfigureGrounded();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Game;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemy
@@ -18,13 +19,11 @@ namespace Assets.Scripts.Enemy
 
         private float _elapsed;
         private int _spawnedEnemies;
-        private bool _playerDead;
 
         private Transform[] _spawners;
 
         private void Awake()
         {
-            //GameController.OnPlayerDeath += () => _playerDead = true;
             //GameController.OnRestartGame += OnRestartGame;
             _spawners = GetComponentsInChildren<Transform>();
         }
@@ -38,7 +37,7 @@ namespace Assets.Scripts.Enemy
 
         void Update()
         {
-            if (_playerDead)
+            if (GameController.IsPlayerDead)
                 return;
 
             _elapsed += Time.deltaTime;

@@ -19,12 +19,27 @@ namespace Assets.Scripts.Enemy
             
         }
 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var player = other.GetComponent<Player.Player>();
+            if (player)
+            {
+                player.Hit();
+                Die(spawnSoul: false);
+            }
+        }
+
         public void Hit(Vector2 hitPoint, Damage damage)
         {
             _health -= DamageMap[damage];
             if (_health > 0)
                 return;
 
+            Die(spawnSoul: true);
+        }
+
+        private void Die(bool spawnSoul)
+        {
             GameController.NotifyEnemyKilled();
             Destroy(gameObject);
         }

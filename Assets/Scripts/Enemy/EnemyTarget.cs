@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Game;
+using UnityEngine;
 
 namespace Assets.Scripts.Enemy
 {
@@ -15,6 +16,9 @@ namespace Assets.Scripts.Enemy
 
         private void Update()
         {
+            if (GameController.IsPlayerDead)
+                return;
+
             var pos = _player.position;
 
             var hit = Physics2D.Raycast(_player.position, Vector2.down, 1000f, _worldLayerMask);
