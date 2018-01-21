@@ -24,16 +24,15 @@ namespace Assets.Scripts.Enemy
 
         private void Awake()
         {
-            //GameController.OnRestartGame += OnRestartGame;
+            GameController.OnRestartGame += OnRestartGame;
             _spawners = GetComponentsInChildren<Transform>();
         }
 
-        //private void OnRestartGame()
-        //{
-        //    _elapsed = 0f;
-        //    _spawnedEnemies = 0;
-        //    _playerDead = false;
-        //}
+        private void OnRestartGame()
+        {
+            _elapsed = 0f;
+            _spawnedEnemies = 0;
+        }
 
         void Update()
         {

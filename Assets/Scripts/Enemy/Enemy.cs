@@ -9,18 +9,21 @@ namespace Assets.Scripts.Enemy
     {
         private int _health = 100;
 
-        private void Start()
+        private void Awake()
         {
-            
+            GameController.OnRestartGame += OnRestartGame;
         }
 
-        private void Update()
+        private void OnRestartGame()
         {
-            
+            DestroyEnemy();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (GameController.IsPlayerDead)
+                return;
+
             var player = other.GetComponent<Player.Player>();
             if (player)
             {
@@ -41,6 +44,12 @@ namespace Assets.Scripts.Enemy
         private void Die(bool spawnSoul)
         {
             GameController.NotifyEnemyKilled();
+            DestroyEnemy();
+        }
+
+        private void DestroyEnemy()
+        {
+            GameController.OnRestartGame -= OnRestartGame;
             Destroy(gameObject);
         }
 

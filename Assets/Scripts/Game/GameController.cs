@@ -20,7 +20,15 @@ namespace Assets.Scripts.Game
             OnPlayerKilled?.Invoke();
         }
 
+        public static void RestartGame()
+        {
+            IsPlayerDead = false;
+            EnemiesKilledCount = 0;
+            OnRestartGame?.Invoke();
+        }
+
         public static event Action<int> OnEnemyKilled;
         public static event Action OnPlayerKilled;
+        public static event Action OnRestartGame;
     }
 }

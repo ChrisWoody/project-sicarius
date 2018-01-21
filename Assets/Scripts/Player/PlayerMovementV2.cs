@@ -31,6 +31,8 @@ namespace Assets.Scripts.Player
             _animator = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
+
+            GameController.OnPlayerKilled += () => _rb.velocity = Vector2.zero;
         }
 
         private void Update()
@@ -64,9 +66,9 @@ namespace Assets.Scripts.Player
 
             _rb.velocity = new Vector2(moveHor * MaxSpeed, _rb.velocity.y);
 
-            if (moveHor > 0 && _sr.flipX)
+            if (moveHor > 0 && !_sr.flipX)
                 Flip();
-            else if (moveHor < 0 && !_sr.flipX)
+            else if (moveHor < 0 && _sr.flipX)
                 Flip();
 
             if (_grounded && _jump) // && _animator.GetBool("Ground"))
