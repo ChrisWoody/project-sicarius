@@ -15,7 +15,10 @@ namespace Assets.Scripts.Game
 
             GameController.OnPlayerKilled += ShowGameOverUi;
             GameController.OnRestartGame += ShowGameUi;
+        }
 
+        private void Start()
+        {
             ShowGameUi();
         }
 

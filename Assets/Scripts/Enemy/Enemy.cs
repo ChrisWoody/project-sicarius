@@ -7,6 +7,8 @@ namespace Assets.Scripts.Enemy
 {
     public class Enemy : MonoBehaviour
     {
+        public EnemySoul EnemySoul;
+
         private int _health = 100;
 
         private void Awake()
@@ -43,6 +45,12 @@ namespace Assets.Scripts.Enemy
 
         private void Die(bool spawnSoul)
         {
+            if (spawnSoul)
+            {
+                var enemySoul = Instantiate(EnemySoul);
+                enemySoul.transform.position = transform.position;
+            }
+
             GameController.NotifyEnemyKilled();
             DestroyEnemy();
         }

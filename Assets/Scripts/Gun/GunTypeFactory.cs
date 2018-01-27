@@ -18,13 +18,11 @@
 
         public static GunType GetNextGunType()
         {
-            if (_currentGunTypeIndex + 1 < GunTypes.Length)
-                return GunTypes[++_currentGunTypeIndex];
-
-            return GunTypes[GunTypes.Length - 1];
+            return _currentGunTypeIndex + 1 < GunTypes.Length
+                ? GunTypes[++_currentGunTypeIndex]
+                : GunTypes[GunTypes.Length - 1];
         }
 
-        // i manually call this as the subscribe to onrestartgame wasn't in the order i expected
         public static void OnRestartGame()
         {
             _currentGunTypeIndex = -1;
