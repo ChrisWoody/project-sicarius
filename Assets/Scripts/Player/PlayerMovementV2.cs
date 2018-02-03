@@ -7,7 +7,7 @@ namespace Assets.Scripts.Player
     {
         private LayerMask _whatIsGround;
         private const float MaxSpeed = 10f;
-        private const float JumpForce = 1150f;
+        private const float JumpForce = 1000f;
 
 
         private Transform _groundCheck;
