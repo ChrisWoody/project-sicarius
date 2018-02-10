@@ -6,8 +6,8 @@ namespace Assets.Scripts.Player
     public class PlayerMovementV2 : MonoBehaviour
     {
         private LayerMask _whatIsGround;
-        private const float MaxSpeed = 10f;
-        private const float JumpForce = 1000f;
+        private const float MaxSpeed = 400f;
+        private const float JumpForce = 20f;
 
 
         private Transform _groundCheck;
@@ -64,7 +64,7 @@ namespace Assets.Scripts.Player
 
             //_animator.SetFloat("Speed", Mathf.Abs(moveHor));
 
-            _rb.velocity = new Vector2(moveHor * MaxSpeed, _rb.velocity.y);
+            _rb.velocity = new Vector2(moveHor * MaxSpeed * Time.fixedDeltaTime, _rb.velocity.y);
 
             if (moveHor > 0 && !_sr.flipX)
                 Flip();
@@ -75,7 +75,7 @@ namespace Assets.Scripts.Player
             {
                 _grounded = false;
                 //_animator.SetBool("Ground", false);
-                _rb.AddForce(new Vector2(0f, JumpForce));
+                _rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
                 //_animator.SetBool("Idle", false);
                 //_animator.SetBool("Running", false);
                 //_animator.SetBool("Jumping", true);

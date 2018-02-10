@@ -71,7 +71,7 @@ namespace Assets.Scripts.Enemy
 
             // Direction to the next waypoint
             var dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-            transform.position += dir * Time.deltaTime * 3.5f;
+            transform.position += dir * Time.deltaTime * 2.5f;
 
             if ((transform.position - path.vectorPath[currentWaypoint]).sqrMagnitude < 0.2f)
             {
