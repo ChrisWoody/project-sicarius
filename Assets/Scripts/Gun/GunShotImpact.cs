@@ -6,9 +6,9 @@ namespace Assets.Scripts.Gun
     {
         public void Setup(RaycastHit2D hit)
         {
-            transform.position = hit.point;
-            transform.forward = hit.normal;
-            Destroy(transform.gameObject, 0.2f);
+            transform.position = hit.point + (hit.normal * 0.25f);
+            transform.up = hit.normal;
+            Destroy(transform.gameObject, 2f);
         }
     }
 }

@@ -7,7 +7,8 @@ namespace Assets.Scripts.Gun
     public class Gun : MonoBehaviour
     {
         public GunShotTrail GunShotTrail;
-        public GunShotImpact GunShotImpact;
+        public GunShotImpact GunShotImpactWorld;
+        public GunShotImpact GunShotImpactEnemy;
 
         public GunType CurrentGunType { get; private set; }
 
@@ -135,7 +136,10 @@ namespace Assets.Scripts.Gun
 
         private void ShowGunShotImpact(RaycastHit2D hit)
         {
-            var gunShotImpact = Instantiate(GunShotImpact);
+            var gunShotImpact = hit.transform.GetComponent<Enemy.Enemy>()
+                ? Instantiate(GunShotImpactEnemy)
+                : Instantiate(GunShotImpactWorld);
+
             gunShotImpact.Setup(hit);
         }
     }

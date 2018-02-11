@@ -26,9 +26,9 @@ namespace Assets.Scripts.Gun
         {
             for (var i = DieInTime; i >= 0; i -= FadeOutSpeed)
             {
-                var color = _lr.startColor;
+                var color = _lr.material.color;
                 color.a = i;
-                _lr.startColor = _lr.endColor = color;
+                _lr.material.color = color;
 
                 yield return new WaitForSeconds(FadeOutSpeed);
             }
@@ -42,9 +42,9 @@ namespace Assets.Scripts.Gun
 
         private static readonly Dictionary<Damage, float> DamageLineWidthMap = new Dictionary<Damage, float>
         {
-            {Damage.Low, 0.03f},
-            {Damage.Medium, 0.09f},
-            {Damage.High, 0.15f},
+            {Damage.Low, 0.05f},
+            {Damage.Medium, 0.15f},
+            {Damage.High, 0.25f},
         };
     }
 }
