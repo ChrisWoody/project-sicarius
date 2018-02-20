@@ -21,6 +21,16 @@ namespace Assets.Scripts.Game
             OnPlayerKilled?.Invoke();
         }
 
+        public static void NotifyPlayerHit()
+        {
+            OnPlayerHit?.Invoke();
+        }
+
+        public static void NotifyGunChange()
+        {
+            OnGunChange?.Invoke();
+        }
+
         public static void NotifySoulCollected()
         {
             EnemySoulsCollectedCount++;
@@ -31,12 +41,15 @@ namespace Assets.Scripts.Game
         {
             IsPlayerDead = false;
             EnemiesKilledCount = 0;
+            EnemySoulsCollectedCount = 0;
             OnRestartGame?.Invoke();
         }
 
         public static event Action<int> OnEnemyKilled;
         public static event Action<int> OnEnemySoulCollected;
         public static event Action OnPlayerKilled;
+        public static event Action OnPlayerHit;
+        public static event Action OnGunChange;
         public static event Action OnRestartGame;
     }
 }

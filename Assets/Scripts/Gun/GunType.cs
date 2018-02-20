@@ -4,6 +4,7 @@ namespace Assets.Scripts.Gun
 {
     public class GunType
     {
+        public readonly Firerate Firerate;
         public readonly float Cooldown;
         public readonly Damage Damage;
         public readonly bool HasSpread;
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Gun
 
         private GunType(Firerate firerate, Damage damage, bool spread, bool autoFiring, bool shootThroughEverything)
         {
+            Firerate = firerate;
             Cooldown = FirerateMap[firerate];
             Damage = damage;
 

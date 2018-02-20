@@ -116,6 +116,7 @@ namespace Assets.Scripts.Gun
             CurrentGunType = GunTypeFactory.GetNextGunType();
             _cooldownElapsed = 0f;
             _coolingDown = false;
+            GameController.NotifyGunChange();
         }
 
         private void ShowMuzzleFlash(Vector3 dir, Vector3 shotStartPosition)

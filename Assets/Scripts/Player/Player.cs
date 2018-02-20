@@ -5,12 +5,12 @@ namespace Assets.Scripts.Player
 {
     public class Player : MonoBehaviour
     {
-        private const int OriginalHealth = 3;
-        private int _currentHealth = OriginalHealth;
+        public const int OriginalHealth = 3;
+        public int CurrentHealth { get; private set; } = OriginalHealth;
 
         private void Awake()
         {
-            GameController.OnRestartGame += () => _currentHealth = OriginalHealth;
+            GameController.OnRestartGame += () => CurrentHealth = OriginalHealth;
         }
 
         private void Update()
@@ -20,9 +20,10 @@ namespace Assets.Scripts.Player
 
         public void Hit()
         {
-            _currentHealth--;
+            CurrentHealth--;
+            GameController.NotifyPlayerHit();
 
-            if (_currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 GameController.NotifyPlayerKilled();
             }
