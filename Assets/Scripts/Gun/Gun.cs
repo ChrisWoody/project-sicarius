@@ -9,6 +9,7 @@ namespace Assets.Scripts.Gun
         public GunShotTrail GunShotTrail;
         public GunShotImpact GunShotImpactWorld;
         public GunShotImpact GunShotImpactEnemy;
+        public Transform ShotMuzzleFlash;
 
         public GunType CurrentGunType { get; private set; }
 
@@ -103,6 +104,7 @@ namespace Assets.Scripts.Gun
                         pointToFireTo = firePos + (fireDir * 1000f);
                     }
 
+                    ShowMuzzleFlash(fireDir, firePos);
                     ShowShotTrail(firePos, pointToFireTo, CurrentGunType.Damage);
                 }
             }
@@ -121,12 +123,11 @@ namespace Assets.Scripts.Gun
 
         private void ShowMuzzleFlash(Vector3 dir, Vector3 shotStartPosition)
         {
-            //var muzzleFlash = Instantiate(ShotMuzzleFlash);
-            //var muzzleFlashPos = shotStartPosition;
-            //muzzleFlashPos.z = -1f;
-            //muzzleFlash.position = muzzleFlashPos;
-            //muzzleFlash.up = dir;
-            //Destroy(muzzleFlash.gameObject, 0.2f);
+            var muzzleFlash = Instantiate(ShotMuzzleFlash);
+            var muzzleFlashPos = shotStartPosition;
+            muzzleFlash.position = muzzleFlashPos;
+            muzzleFlash.up = dir;
+            Destroy(muzzleFlash.gameObject, 0.3f);
         }
 
         private void ShowShotTrail(Vector3 shotStartPos, Vector3 shotEndPos, Damage damage)

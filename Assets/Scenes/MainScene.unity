@@ -6481,6 +6481,7 @@ MonoBehaviour:
     type: 2}
   GunShotImpactWorld: {fileID: 0}
   GunShotImpactEnemy: {fileID: 0}
+  ShotMuzzleFlash: {fileID: 0}
 --- !u!1 &561617094
 GameObject:
   m_ObjectHideFlags: 0
@@ -28989,6 +28990,7 @@ MonoBehaviour:
     type: 2}
   GunShotImpactWorld: {fileID: 0}
   GunShotImpactEnemy: {fileID: 0}
+  ShotMuzzleFlash: {fileID: 0}
 --- !u!1 &1280404989
 GameObject:
   m_ObjectHideFlags: 0
@@ -29108,6 +29110,8 @@ MonoBehaviour:
   GunShotImpactWorld: {fileID: 114695033391835818, guid: 5b7cb1aee4bfa8f4bb582515371e7941,
     type: 2}
   GunShotImpactEnemy: {fileID: 114455893915921674, guid: cead9dae4eb99af48997b2295066e110,
+    type: 2}
+  ShotMuzzleFlash: {fileID: 4937827979291710, guid: aca74b5992e2e144793489947a031d7c,
     type: 2}
 --- !u!1 &1289942348
 GameObject:
