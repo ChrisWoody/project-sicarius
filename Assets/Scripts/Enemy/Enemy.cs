@@ -30,7 +30,7 @@ namespace Assets.Scripts.Enemy
             if (player)
             {
                 player.Hit();
-                Die(spawnSoul: false);
+                Die();
             }
         }
 
@@ -40,16 +40,13 @@ namespace Assets.Scripts.Enemy
             if (_health > 0)
                 return;
 
-            Die(spawnSoul: true);
+            Die();
         }
 
-        private void Die(bool spawnSoul)
+        private void Die()
         {
-            if (spawnSoul)
-            {
-                var enemySoul = Instantiate(EnemySoul);
-                enemySoul.transform.position = transform.position;
-            }
+            var enemySoul = Instantiate(EnemySoul);
+            enemySoul.transform.position = transform.position;
 
             GameController.NotifyEnemyKilled();
             DestroyEnemy();
