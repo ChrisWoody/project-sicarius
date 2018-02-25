@@ -61,22 +61,12 @@ namespace Assets.Scripts.Gun
             var firePos = transform.position;
             var fireDir = transform.up;
 
-            var shots = CurrentGunType.HasSpread ? 10 : 1;
-            for (var i = 0; i < shots; i++)
+            for (var i = 0; i < CurrentGunType.SpreadCount; i++)
             {
-                var randVal = (UnityEngine.Random.value * 10f) - 5f;
-                var dirToFire = CurrentGunType.HasSpread ? Quaternion.Euler(0, 0, randVal) * fireDir : fireDir;
+                var dirToFire = GetDirectionToFire(fireDir);
                 if (CurrentGunType.CanShootThroughEverything)
                 {
-                    var hits = Physics2D.RaycastAll(firePos, fireDir, 100f, _enemyLayerMask);
-
-                    if (hits.Length == 0)
-                    {
-                        ShowMuzzleFlash(fireDir, firePos);
-                        ShowShotTrail(firePos, firePos + (fireDir * 1000f), CurrentGunType.Damage);
-                        return;
-                    }
-
+                    var hits = Physics2D.RaycastAll(firePos, dirToFire, 100f, _enemyLayerMask);
                     foreach (var hit in hits)
                     {
                         if (hit.collider)
@@ -86,8 +76,7 @@ namespace Assets.Scripts.Gun
                         }
                     }
 
-                    ShowMuzzleFlash(fireDir, firePos);
-                    ShowShotTrail(firePos, firePos + (fireDir * 1000f), CurrentGunType.Damage);
+                    ShowShotTrail(firePos, firePos + (dirToFire * 1000f), CurrentGunType.Damage);
                 }
                 else
                 {
@@ -101,13 +90,23 @@ namespace Assets.Scripts.Gun
                     }
                     else
                     {
-                        pointToFireTo = firePos + (fireDir * 1000f);
+                        pointToFireTo = firePos + (dirToFire * 1000f);
                     }
 
-                    ShowMuzzleFlash(fireDir, firePos);
                     ShowShotTrail(firePos, pointToFireTo, CurrentGunType.Damage);
                 }
             }
+
+            ShowMuzzleFlash(fireDir, firePos);
+        }
+
+        private Vector3 GetDirectionToFire(Vector3 fireDir)
+        {
+            if (CurrentGunType.Spread == Spread.None)
+                return fireDir;
+
+            var randomSpread = UnityEngine.Random.value * CurrentGunType.SpreadAmount - CurrentGunType.SpreadAmount / 2;
+            return Quaternion.Euler(0, 0, randomSpread) * fireDir;
         }
 
         private void UpdateCurrentGunType(int soulCollectedCount)

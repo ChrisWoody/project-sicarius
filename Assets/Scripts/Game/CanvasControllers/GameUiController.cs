@@ -84,13 +84,21 @@ namespace Assets.Scripts.Game.CanvasControllers
             }
 
 
-            if (_gun.CurrentGunType.HasSpread) // will update to an enum
+            if (_gun.CurrentGunType.Spread == Spread.Wide)
             {
                 Spread1.color = Spread2.color = Spread3.color = _whiteTransparentColor;
             }
-            else
+
+            if (_gun.CurrentGunType.Spread == Spread.Small)
             {
-                Spread1.color = Spread2.color = Spread3.color = _greyTransparentColor;
+                Spread1.color = Spread2.color = _whiteTransparentColor;
+                Spread3.color = _greyTransparentColor;
+            }
+
+            if (_gun.CurrentGunType.Spread == Spread.None)
+            {
+                Spread1.color = _whiteTransparentColor;
+                Spread2.color = Spread3.color = _greyTransparentColor;
             }
 
 
