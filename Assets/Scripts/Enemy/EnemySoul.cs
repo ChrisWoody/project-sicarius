@@ -9,12 +9,14 @@ namespace Assets.Scripts.Enemy
         public EnemySoulParticles EnemySoulParticles;
 
         private SpriteRenderer _ps;
+        private bool _pickedUp;
 
         private void Awake()
         {
             GameController.OnRestartGame += () =>
             {
-                DestoryOnRestart();
+                if (!_pickedUp)
+                    DestoryOnRestart();
                 Destroy(gameObject);
             };
             _ps = GetComponent<SpriteRenderer>();
@@ -27,8 +29,9 @@ namespace Assets.Scripts.Enemy
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.GetComponent<Player.Player>())
+            if (!_pickedUp && other.GetComponent<Player.Player>())
             {
+                _pickedUp = true;
                 Instantiate(EnemySoulParticles, transform.position, transform.rotation);
                 GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);
                 StartCoroutine(FadeOutTrail());
