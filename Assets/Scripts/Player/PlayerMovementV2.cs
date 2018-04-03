@@ -5,6 +5,8 @@ namespace Assets.Scripts.Player
 {
     public class PlayerMovementV2 : MonoBehaviour
     {
+        public Transform ToFlip;
+
         private LayerMask _whatIsGround;
         private const float MaxSpeed = 400f;
         private const float JumpForce = 20f;
@@ -19,7 +21,7 @@ namespace Assets.Scripts.Player
 
         private Animator _animator;
         private Rigidbody2D _rb;
-        private SpriteRenderer _sr;
+        //private SpriteRenderer _sr;
 
         private bool _facingRight = true;
 
@@ -30,7 +32,7 @@ namespace Assets.Scripts.Player
             _ceilingCheck = transform.Find("CeilingCheck");
             _animator = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody2D>();
-            _sr = GetComponent<SpriteRenderer>();
+            //_sr = GetComponent<SpriteRenderer>();
 
             GameController.OnPlayerKilled += () => _rb.velocity = Vector2.zero;
         }
@@ -62,14 +64,16 @@ namespace Assets.Scripts.Player
             //var moveHor = CrossPlatformInputManager.GetAxis("Horizontal");
             var moveHor = Input.GetAxis("Horizontal");
 
-            //_animator.SetFloat("Speed", Mathf.Abs(moveHor));
+            _animator.SetFloat("Speed", Mathf.Abs(moveHor));
 
             _rb.velocity = new Vector2(moveHor * MaxSpeed * Time.fixedDeltaTime, _rb.velocity.y);
 
-            if (moveHor > 0 && !_sr.flipX)
-                Flip();
-            else if (moveHor < 0 && _sr.flipX)
-                Flip();
+            
+
+            if (moveHor > 0)
+                ToFlip.localScale = new Vector3(1, 1, 0);
+            else if (moveHor < 0)
+                ToFlip.localScale = new Vector3(-1, 1, 0);
 
             if (_grounded && _jump) // && _animator.GetBool("Ground"))
             {
@@ -105,7 +109,7 @@ namespace Assets.Scripts.Player
         // Keep in mind, this might not be ideal, i think sprite has a flip option
         private void Flip()
         {
-            _sr.flipX = !_sr.flipX;
+            //_sr.flipX = !_sr.flipX;
         }
     }
 }

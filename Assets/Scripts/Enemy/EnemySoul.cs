@@ -17,7 +17,7 @@ namespace Assets.Scripts.Enemy
             {
                 if (!_pickedUp)
                     DestoryOnRestart();
-                Destroy(gameObject);
+                Destroy(gameObject); // issue here with resetting game
             };
             _ps = GetComponent<SpriteRenderer>();
         }
