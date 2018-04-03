@@ -27188,6 +27188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Poses:
   - {fileID: 11400000, guid: fd15332819a9db94a9141977da4f7452, type: 2}
+  - {fileID: 11400000, guid: 610000f658942be4bb3596206bf4d0c4, type: 2}
 --- !u!70 &1048287897
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

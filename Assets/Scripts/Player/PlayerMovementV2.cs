@@ -102,8 +102,8 @@ namespace Assets.Scripts.Player
                 if (colliders[i].gameObject != gameObject)
                     _grounded = true;
 
-            //_animator.SetBool("Ground", _grounded);
-            //_animator.SetFloat("vSpeed", _rb.velocity.y);
+            _animator.SetBool("Ground", _grounded);
+            _animator.SetFloat("vSpeed", _rb.velocity.y);
         }
 
         // Keep in mind, this might not be ideal, i think sprite has a flip option
