@@ -22,7 +22,7 @@ namespace Assets.Scripts.Enemy
             var pos = _player.position;
 
             var hit = Physics2D.Raycast(_player.position, Vector2.down, 1000f, _worldLayerMask);
-            pos.y = hit.point.y + 1f;
+            pos.y = hit.point.y + 0.5f;
             
             transform.position = pos;
         }

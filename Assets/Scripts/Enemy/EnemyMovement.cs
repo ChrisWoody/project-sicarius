@@ -53,34 +53,36 @@ namespace Assets.Scripts.Enemy
                 return;
             }
 
-
-            if (path.vectorPath[currentWaypoint].x > transform.position.x)
-            {
-                transform.localScale = new Vector3(1f, 1f, 1f);
-            }
-            else
-            {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
-            }
-
-
             // Direction to the next waypoint
             var dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-            transform.position += dir * Time.deltaTime * 2.5f;
+            transform.position += dir * Time.deltaTime * 3.5f;
 
             if ((transform.position - path.vectorPath[currentWaypoint]).sqrMagnitude < 0.2f)
             {
                 currentWaypoint++;
+
+                if (currentWaypoint < path.vectorPath.Count)
+                    transform.localScale = path.vectorPath[currentWaypoint].x > transform.position.x ? new Vector3(1f, 1f, 1f) : new Vector3(-1f, 1f, 1f);
                 return;
             }
 
-            if (path.vectorPath[currentWaypoint].y > transform.position.y)
+            if (path.vectorPath[currentWaypoint].y > transform.position.y + 0.1f)
             {
-                _animator.SetBool("Jumping", true);
+                _animator.SetBool("Run", false);
+                _animator.SetBool("JumpUp", true);
+                _animator.SetBool("JumpDown", false);
+            }
+            else if (path.vectorPath[currentWaypoint].y < transform.position.y - 0.1f)
+            {
+                _animator.SetBool("Run", false);
+                _animator.SetBool("JumpUp", false);
+                _animator.SetBool("JumpDown", true);
             }
             else
             {
-                _animator.SetBool("Jumping", false);
+                _animator.SetBool("Run", true);
+                _animator.SetBool("JumpUp", false);
+                _animator.SetBool("JumpDown", false);
             }
         }
 
