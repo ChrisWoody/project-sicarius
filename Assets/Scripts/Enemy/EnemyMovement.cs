@@ -24,10 +24,13 @@ namespace Assets.Scripts.Enemy
         public float repathRate = 1f;
         private float lastRepath = -9999;
 
+        private Animator _animator;
+
         private void Awake()
         {
             _seeker = GetComponent<Seeker>();
             _playerIsh = FindObjectOfType<EnemyTarget>().transform;
+            _animator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -50,22 +53,14 @@ namespace Assets.Scripts.Enemy
                 return;
             }
 
-            //if (path.vectorPath[currentWaypoint].y > transform.position.y+0.25f)
-            //{
-            //    _animator.SetBool("Jumping", true);
-            //}
-            //else
-            //{
-            //    _animator.SetBool("Jumping", false);
-            //}
 
             if (path.vectorPath[currentWaypoint].x > transform.position.x)
             {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
+                transform.localScale = new Vector3(1f, 1f, 1f);
             }
             else
             {
-                transform.localScale = new Vector3(1f, 1f, 1f);
+                transform.localScale = new Vector3(-1f, 1f, 1f);
             }
 
 
@@ -77,6 +72,15 @@ namespace Assets.Scripts.Enemy
             {
                 currentWaypoint++;
                 return;
+            }
+
+            if (path.vectorPath[currentWaypoint].y > transform.position.y)
+            {
+                _animator.SetBool("Jumping", true);
+            }
+            else
+            {
+                _animator.SetBool("Jumping", false);
             }
         }
 
