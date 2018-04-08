@@ -25,6 +25,7 @@ namespace Assets.Scripts.Enemy
         private float lastRepath = -9999;
 
         private Animator _animator;
+        private float _speed = 3.5f;
 
         private void Awake()
         {
@@ -55,7 +56,7 @@ namespace Assets.Scripts.Enemy
 
             // Direction to the next waypoint
             var dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-            transform.position += dir * Time.deltaTime * 3.5f;
+            transform.position += dir * Time.deltaTime * _speed;
 
             if ((transform.position - path.vectorPath[currentWaypoint]).sqrMagnitude < 0.2f)
             {
@@ -71,18 +72,21 @@ namespace Assets.Scripts.Enemy
                 _animator.SetBool("Run", false);
                 _animator.SetBool("JumpUp", true);
                 _animator.SetBool("JumpDown", false);
+                _speed = 5.5f;
             }
             else if (path.vectorPath[currentWaypoint].y < transform.position.y - 0.1f)
             {
                 _animator.SetBool("Run", false);
                 _animator.SetBool("JumpUp", false);
                 _animator.SetBool("JumpDown", true);
+                _speed = 5.5f;
             }
             else
             {
                 _animator.SetBool("Run", true);
                 _animator.SetBool("JumpUp", false);
                 _animator.SetBool("JumpDown", false);
+                _speed = 3.5f;
             }
         }
 
