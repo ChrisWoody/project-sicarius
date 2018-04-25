@@ -7,6 +7,7 @@ namespace Assets.Scripts.Enemy
     public class EnemySpawner : MonoBehaviour
     {
         public Enemy Enemy;
+        public Transform[] Spawners;
         private float _spawnFrequency = 2f;
 
         // Something like this, could be a calculated thing instead of an explicit map
@@ -20,12 +21,9 @@ namespace Assets.Scripts.Enemy
         private float _elapsed;
         private int _spawnedEnemies;
 
-        private Transform[] _spawners;
-
         private void Awake()
         {
             GameController.OnRestartGame += OnRestartGame;
-            _spawners = GetComponentsInChildren<Transform>();
         }
 
         private void OnRestartGame()
@@ -36,7 +34,7 @@ namespace Assets.Scripts.Enemy
 
         void Update()
         {
-            if (GameController.IsPlayerDead)
+            if (GameController.IsPlayerDead || GameController.IsPlayingIntro)
                 return;
 
             _elapsed += Time.deltaTime;
@@ -45,8 +43,8 @@ namespace Assets.Scripts.Enemy
                 _elapsed = 0f;
 
                 var enemy = Instantiate(Enemy);
-                var index = UnityEngine.Random.Range(0, _spawners.Length);
-                enemy.transform.position = _spawners[index].position;
+                var index = UnityEngine.Random.Range(0, Spawners.Length);
+                enemy.transform.position = Spawners[index].position;
                 _spawnedEnemies++;
                 UpdateSpawnFrequency();
             }

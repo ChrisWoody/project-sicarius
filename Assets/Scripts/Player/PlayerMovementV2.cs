@@ -39,7 +39,7 @@ namespace Assets.Scripts.Player
 
         private void Update()
         {
-            if (GameController.IsPlayerDead)
+            if (GameController.IsPlayerDead || GameController.IsPlayingIntro)
                 return;
 
             if (!_jump)
@@ -49,7 +49,7 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
-            if (GameController.IsPlayerDead)
+            if (GameController.IsPlayerDead || GameController.IsPlayingIntro)
                 return;
 
             ConfigureGrounded();

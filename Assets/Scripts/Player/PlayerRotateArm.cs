@@ -10,7 +10,7 @@ namespace Assets.Scripts.Player
 
         private void Update()
         {
-            if (GameController.IsPlayerDead)
+            if (GameController.IsPlayerDead || GameController.IsPlayingIntro)
                 return;
 
             var crosshairPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

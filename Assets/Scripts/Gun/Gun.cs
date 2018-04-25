@@ -36,7 +36,7 @@ namespace Assets.Scripts.Gun
 
         private void Update()
         {
-            if (GameController.IsPlayerDead)
+            if (GameController.IsPlayerDead || GameController.IsPlayingIntro)
                 return;
 
             if (_coolingDown)

@@ -5,9 +5,30 @@ namespace Assets.Scripts.Game
 {
     public class GameController : MonoBehaviour
     {
+        public bool StartGameImmediatelly;
+        public Transform PlayerIntroStart;
+        public Transform PlayerIntroEnd;
+        public Transform Player;
+
+        public static bool IsPlayingIntro { get; private set; }
+
         public static int EnemiesKilledCount { get; private set; }
         public static int EnemySoulsCollectedCount { get; private set; }
         public static bool IsPlayerDead { get; private set; }
+
+        private void Start()
+        {
+            if (StartGameImmediatelly)
+            {
+                Player.position = PlayerIntroEnd.position;
+            }
+            else
+            {
+                IsPlayerDead = true;
+                Player.position = PlayerIntroStart.position;
+                OnShowMainMenu?.Invoke();
+            }
+        }
 
         public static void NotifyEnemyKilled()
         {
@@ -45,11 +66,27 @@ namespace Assets.Scripts.Game
             OnRestartGame?.Invoke();
         }
 
+        public static void PlayIntro()
+        {
+            IsPlayingIntro = true;
+            OnPlayIntro?.Invoke();
+        }
+
+        public static void IntroFinished()
+        {
+            IsPlayerDead = false;
+            IsPlayingIntro = false;
+            OnIntroFinished?.Invoke();
+        }
+
         public static event Action<int> OnEnemyKilled;
         public static event Action<int> OnEnemySoulCollected;
         public static event Action OnPlayerKilled;
         public static event Action OnPlayerHit;
         public static event Action OnGunChange;
         public static event Action OnRestartGame;
+        public static event Action OnShowMainMenu;
+        public static event Action OnPlayIntro;
+        public static event Action OnIntroFinished;
     }
 }
