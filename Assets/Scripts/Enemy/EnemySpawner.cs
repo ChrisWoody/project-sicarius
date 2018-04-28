@@ -20,16 +20,25 @@ namespace Assets.Scripts.Enemy
 
         private float _elapsed;
         private int _spawnedEnemies;
+        private int _currentNumberOfEnemies;
+        private const int TotalCurrentEnemies = 10;
 
         private void Awake()
         {
             GameController.OnRestartGame += OnRestartGame;
+            GameController.OnEnemyKilled += OnEnemyKilled;
         }
 
         private void OnRestartGame()
         {
             _elapsed = 0f;
             _spawnedEnemies = 0;
+            _currentNumberOfEnemies = 0;
+        }
+
+        private void OnEnemyKilled(int obj)
+        {
+            _currentNumberOfEnemies--;
         }
 
         void Update()
@@ -42,6 +51,10 @@ namespace Assets.Scripts.Enemy
             {
                 _elapsed = 0f;
 
+                if (_currentNumberOfEnemies >= TotalCurrentEnemies)
+                    return;
+
+                _currentNumberOfEnemies++;
                 var enemy = Instantiate(Enemy);
                 var index = UnityEngine.Random.Range(0, Spawners.Length);
                 enemy.transform.position = Spawners[index].position;

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Enemy
             _worldLayerMask = LayerMask.GetMask("World");
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (GameController.IsPlayerDead)
                 return;

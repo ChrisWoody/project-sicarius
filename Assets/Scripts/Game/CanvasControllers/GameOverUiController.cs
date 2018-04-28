@@ -4,7 +4,14 @@
     {
         private void Start()
         {
-            
+            GameController.OnPlayerKilled += CanRestartGame;
+        }
+
+        private bool _canResetGame;
+
+        private void CanRestartGame()
+        {
+            _canResetGame = true;
         }
 
         private void Update()
@@ -14,12 +21,17 @@
 
         public void Yes()
         {
-            GameController.RestartGame();
+            if (_canResetGame)
+            {
+                GameController.RestartGame();
+                _canResetGame = false;
+            }
         }
 
         public void No()
         {
             // go to main menu
+            _canResetGame = false;
         }
 
 

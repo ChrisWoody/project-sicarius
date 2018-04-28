@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Game;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -18,8 +18,8 @@ namespace Assets.Scripts.Player
 
             var dir = transform.position - crosshairPos;
             transform.up = dir.normalized;
-            if (Input.GetKeyDown(KeyCode.Escape))
-                EditorApplication.isPaused = true;
+            //if (Input.GetKeyDown(KeyCode.Escape))
+            //    EditorApplication.isPaused = true;
             Crosshair.position = crosshairPos;
         }
     }
