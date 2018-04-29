@@ -10,10 +10,12 @@ namespace Assets.Scripts.Enemy
         public EnemySoul EnemySoul;
 
         private int _health = 100;
+        private Vector3 _homePortalPos;
 
         private void Awake()
         {
             GameController.OnRestartGame += OnRestartGame;
+            _homePortalPos = new Vector3(39.5f, 0.5f, 0f);
         }
 
         private void OnRestartGame()
@@ -43,10 +45,16 @@ namespace Assets.Scripts.Enemy
             Die();
         }
 
+        public void Init(Vector3 homePortalPos)
+        {
+            _homePortalPos = homePortalPos;
+        }
+
         private void Die()
         {
             var enemySoul = Instantiate(EnemySoul);
             enemySoul.transform.position = transform.position;
+            enemySoul.Init(_homePortalPos);
 
             GameController.NotifyEnemyKilled();
             DestroyEnemy();

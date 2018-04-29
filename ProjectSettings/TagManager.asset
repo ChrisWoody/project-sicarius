@@ -7,6 +7,8 @@ TagManager:
   - Background
   - World
   - Enemy
+  - EnemySoul
+  - EnemyPortal
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - EnemySoul
   - PathfindingIgnore
   - 2DLight
-  - 
+  - EnemyPortal
   - 
   - 
   - 

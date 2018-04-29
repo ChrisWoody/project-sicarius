@@ -21,6 +21,7 @@ namespace Assets.Scripts.Game
             if (StartGameImmediatelly)
             {
                 Player.position = PlayerIntroEnd.position;
+                OnShowGameMenu?.Invoke();
             }
             else
             {
@@ -86,6 +87,7 @@ namespace Assets.Scripts.Game
         public static event Action OnGunChange;
         public static event Action OnRestartGame;
         public static event Action OnShowMainMenu;
+        public static event Action OnShowGameMenu;
         public static event Action OnPlayIntro;
         public static event Action OnIntroFinished;
     }

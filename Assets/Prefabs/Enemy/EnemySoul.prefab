@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 199390549008616490}
   m_Layer: 11
   m_Name: EnemySoul
-  m_TagString: Untagged
+  m_TagString: EnemySoul
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220343356970820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.204061, y: -14.126432, z: 0}
+  m_LocalPosition: {x: 36.642307, y: 2.6589541, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -157,10 +157,10 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1197161365
+  randomSeed: 1466014412
   InitialModule:
     serializedVersion: 3
     enabled: 1

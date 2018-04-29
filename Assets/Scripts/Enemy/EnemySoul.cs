@@ -10,6 +10,8 @@ namespace Assets.Scripts.Enemy
 
         private SpriteRenderer _ps;
         private bool _pickedUp;
+        private bool _reachedPortal;
+        private Vector3 _homePortalDir;
 
         private void Awake()
         {
@@ -31,7 +33,20 @@ namespace Assets.Scripts.Enemy
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!_pickedUp && other.GetComponent<Player.Player>())
+            if (_pickedUp || _reachedPortal)
+                return;
+
+            if (other.tag == "EnemyPortal")
+            {
+                _reachedPortal = true;
+                Instantiate(EnemySoulParticles, transform.position, transform.rotation);
+                GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);
+                StartCoroutine(FadeOutTrail());
+                DestoryOnRestart();
+                Destroy(gameObject, DieInTime);
+            }
+
+            if (other.GetComponent<Player.Player>())
             {
                 _pickedUp = true;
                 Instantiate(EnemySoulParticles, transform.position, transform.rotation);
@@ -40,6 +55,19 @@ namespace Assets.Scripts.Enemy
                 DestoryOnRestart();
                 Destroy(gameObject, DieInTime);
             }
+        }
+
+        public void Init(Vector3 homePortalPos)
+        {
+            _homePortalDir = (homePortalPos - transform.position).normalized;
+        }
+
+        private void FixedUpdate()
+        {
+            if (_pickedUp)
+                return;
+
+            transform.position += _homePortalDir * 2f * Time.fixedDeltaTime;
         }
 
         private const float DieInTime = 3f; // Time for the particle system to finish

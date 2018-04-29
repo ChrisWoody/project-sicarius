@@ -22,6 +22,7 @@ namespace Assets.Scripts.Game
             GameController.OnShowMainMenu += ShowMainMenuUi;
             GameController.OnPlayIntro += ShowIntroUi;
             GameController.OnIntroFinished += ShowGameUi;
+            GameController.OnShowGameMenu += ShowGameUi;
         }
 
         private void Start()

@@ -58,6 +58,7 @@ namespace Assets.Scripts.Enemy
                 var enemy = Instantiate(Enemy);
                 var index = UnityEngine.Random.Range(0, Spawners.Length);
                 enemy.transform.position = Spawners[index].position;
+                enemy.Init(enemy.transform.position);
                 _spawnedEnemies++;
                 UpdateSpawnFrequency();
             }
