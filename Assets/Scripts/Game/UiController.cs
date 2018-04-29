@@ -8,17 +8,19 @@ namespace Assets.Scripts.Game
         private CanvasBase _gameUiController;
         private CanvasBase _gameOverUiController;
         private CanvasBase _mainMenuController;
+        private CanvasBase _introUiController;
 
         private void Awake()
         {
             _gameUiController = GetComponentInChildren<GameUiController>();
             _gameOverUiController = GetComponentInChildren<GameOverUiController>();
             _mainMenuController = GetComponentInChildren<MainMenuController>();
+            _introUiController = GetComponentInChildren<IntroUiController>();
 
             GameController.OnPlayerKilled += ShowGameOverUi;
             GameController.OnRestartGame += ShowGameUi;
             GameController.OnShowMainMenu += ShowMainMenuUi;
-            GameController.OnPlayIntro += HideAllUiControllers;
+            GameController.OnPlayIntro += ShowIntroUi;
             GameController.OnIntroFinished += ShowGameUi;
         }
 
@@ -49,6 +51,12 @@ namespace Assets.Scripts.Game
         {
             HideAllUiControllers();
             _mainMenuController.OnShowCanvas();
+        }
+
+        private void ShowIntroUi()
+        {
+            HideAllUiControllers();
+            _introUiController.OnShowCanvas();
         }
     }
 }
