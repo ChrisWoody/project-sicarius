@@ -17,7 +17,7 @@ namespace Assets.Scripts.Enemy
         {
             GameController.OnRestartGame += () =>
             {
-                if (_pickedUp)
+                if (_pickedUp || _reachedPortal)
                     return;
                     
                 DestoryOnRestart();
@@ -39,22 +39,23 @@ namespace Assets.Scripts.Enemy
             if (other.tag == "EnemyPortal")
             {
                 _reachedPortal = true;
-                Instantiate(EnemySoulParticles, transform.position, transform.rotation);
-                GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);
-                StartCoroutine(FadeOutTrail());
-                DestoryOnRestart();
-                Destroy(gameObject, DieInTime);
+                DestroyEnemy();
             }
 
             if (other.GetComponent<Player.Player>())
             {
                 _pickedUp = true;
-                Instantiate(EnemySoulParticles, transform.position, transform.rotation);
-                GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);
-                StartCoroutine(FadeOutTrail());
-                DestoryOnRestart();
-                Destroy(gameObject, DieInTime);
+                DestroyEnemy();
             }
+        }
+
+        private void DestroyEnemy()
+        {
+            Instantiate(EnemySoulParticles, transform.position, transform.rotation);
+            GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);
+            StartCoroutine(FadeOutTrail());
+            DestoryOnRestart();
+            Destroy(gameObject, DieInTime);
         }
 
         public void Init(Vector3 homePortalPos)
