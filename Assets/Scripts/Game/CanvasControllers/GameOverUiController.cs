@@ -15,8 +15,8 @@ namespace Assets.Scripts.Game.CanvasControllers
         private void OnPlayerKilled()
         {
             // set enemies killed and souls collected
-            GameObject.Find("GameOverEnemiesKilledText").GetComponent<Text>().text = $"Demons Killed: {GameController.EnemiesKilledCount}";
             GameObject.Find("GameOverEnemiesSoulsCollectedText").GetComponent<Text>().text = $"Souls Collected: {GameController.EnemySoulsCollectedCount}";
+            GameObject.Find("GameOverHighscoreEnemiesSoulsCollectedText").GetComponent<Text>().text = $"Most Souls Collected: {GameController.HighscoreEnemySoulsCollectedCount}";
 
             _canResetGame = true;
         }

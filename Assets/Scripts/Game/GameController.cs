@@ -12,8 +12,9 @@ namespace Assets.Scripts.Game
 
         public static bool IsPlayingIntro { get; private set; }
 
-        public static int EnemiesKilledCount { get; private set; }
+        public static int EnemiesKilledCount { get; private set; } // thinking not as important
         public static int EnemySoulsCollectedCount { get; private set; }
+        public static int HighscoreEnemySoulsCollectedCount { get; private set; }
         public static bool IsPlayerDead { get; private set; }
 
         private void Start()
@@ -39,6 +40,9 @@ namespace Assets.Scripts.Game
 
         public static void NotifyPlayerKilled()
         {
+            if (HighscoreEnemySoulsCollectedCount < EnemySoulsCollectedCount)
+                HighscoreEnemySoulsCollectedCount = EnemySoulsCollectedCount;
+
             IsPlayerDead = true;
             OnPlayerKilled?.Invoke();
         }

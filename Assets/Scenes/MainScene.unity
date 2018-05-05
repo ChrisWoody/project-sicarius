@@ -3593,7 +3593,7 @@ GameObject:
   - component: {fileID: 241428181}
   - component: {fileID: 241428180}
   m_Layer: 0
-  m_Name: GameOverEnemiesSoulsCollectedText
+  m_Name: GameOverHighscoreEnemiesSoulsCollectedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3615,7 +3615,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 38.9}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241428180
 MonoBehaviour:
@@ -3649,7 +3649,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Souls Collected: 0'
+  m_Text: 'Most Souls Collected: 0'
 --- !u!222 &241428181
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53368,7 +53368,7 @@ GameObject:
   - component: {fileID: 2006997018}
   - component: {fileID: 2006997017}
   m_Layer: 0
-  m_Name: GameOverEnemiesKilledText
+  m_Name: GameOverEnemiesSoulsCollectedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53390,7 +53390,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 67.6}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2006997017
 MonoBehaviour:
@@ -53424,7 +53424,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Demons Kiled: 0'
+  m_Text: 'Souls Collected: 0'
 --- !u!222 &2006997018
 CanvasRenderer:
   m_ObjectHideFlags: 0
