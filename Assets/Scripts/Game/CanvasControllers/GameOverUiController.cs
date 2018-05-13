@@ -37,8 +37,11 @@ namespace Assets.Scripts.Game.CanvasControllers
 
         public void No()
         {
-            // go to main menu
-            _canResetGame = false;
+            if (_canResetGame)
+            {
+                GameController.NotifyReturnToMainMenu();
+                _canResetGame = false;
+            }
         }
 
 

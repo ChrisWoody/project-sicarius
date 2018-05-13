@@ -995,7 +995,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 33878924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1176209359}
+        m_MethodName: No
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &33878924
@@ -6785,7 +6796,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492854954}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5998bbe8bae5cd41a7f932e85254aa1, type: 3}
   m_Name: 
@@ -53238,7 +53249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d57908609ca53c419d33caa0219e39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartGameImmediatelly: 1
+  StartGameImmediatelly: 0
   PlayerIntroStart: {fileID: 425473069}
   PlayerIntroEnd: {fileID: 1970124260}
   Player: {fileID: 1048287895}

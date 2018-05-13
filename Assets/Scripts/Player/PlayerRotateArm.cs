@@ -8,6 +8,16 @@ namespace Assets.Scripts.Player
     {
         public Transform Crosshair;
 
+        private void Start()
+        {
+            GameController.OnShowMainMenu += OnShowMainMenu;
+        }
+
+        private void OnShowMainMenu()
+        {
+            transform.up = Vector3.up;
+        }
+
         private void Update()
         {
             if (GameController.IsPlayerDead || GameController.IsPlayingIntro)

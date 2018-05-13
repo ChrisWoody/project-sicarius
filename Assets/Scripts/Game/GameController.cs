@@ -19,6 +19,8 @@ namespace Assets.Scripts.Game
 
         private void Start()
         {
+            OnShowMainMenu += InternalOnShowMainMenu;
+
             if (StartGameImmediatelly)
             {
                 Player.position = PlayerIntroEnd.position;
@@ -26,10 +28,14 @@ namespace Assets.Scripts.Game
             }
             else
             {
-                IsPlayerDead = true;
-                Player.position = PlayerIntroStart.position;
                 OnShowMainMenu?.Invoke();
             }
+        }
+
+        private void InternalOnShowMainMenu()
+        {
+            IsPlayerDead = true;
+            Player.position = PlayerIntroStart.position;
         }
 
         public static void NotifyEnemyKilled()
@@ -65,10 +71,15 @@ namespace Assets.Scripts.Game
 
         public static void RestartGame()
         {
+            InternalRestartGame();
+            OnRestartGame?.Invoke();
+        }
+
+        private static void InternalRestartGame()
+        {
             IsPlayerDead = false;
             EnemiesKilledCount = 0;
             EnemySoulsCollectedCount = 0;
-            OnRestartGame?.Invoke();
         }
 
         public static void PlayIntro()
@@ -82,6 +93,13 @@ namespace Assets.Scripts.Game
             IsPlayerDead = false;
             IsPlayingIntro = false;
             OnIntroFinished?.Invoke();
+        }
+
+        public static void NotifyReturnToMainMenu()
+        {
+            InternalRestartGame();
+            OnRestartGame?.Invoke();
+            OnShowMainMenu?.Invoke();
         }
 
         public static event Action<int> OnEnemyKilled;
