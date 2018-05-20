@@ -1,9 +1,13 @@
-﻿namespace Assets.Scripts.Game.CanvasControllers
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Game.CanvasControllers
 {
     public class MainMenuController : CanvasBase
     {
         public void StartGame()
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
             GameController.PlayIntro();
         }
 

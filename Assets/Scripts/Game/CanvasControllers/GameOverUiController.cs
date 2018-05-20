@@ -18,6 +18,8 @@ namespace Assets.Scripts.Game.CanvasControllers
             GameObject.Find("GameOverEnemiesSoulsCollectedText").GetComponent<Text>().text = $"Souls Collected: {GameController.EnemySoulsCollectedCount}";
             GameObject.Find("GameOverHighscoreEnemiesSoulsCollectedText").GetComponent<Text>().text = $"Most Souls Collected: {GameController.HighscoreEnemySoulsCollectedCount}";
 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             _canResetGame = true;
         }
 
@@ -30,6 +32,8 @@ namespace Assets.Scripts.Game.CanvasControllers
         {
             if (_canResetGame)
             {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
                 GameController.RestartGame();
                 _canResetGame = false;
             }
