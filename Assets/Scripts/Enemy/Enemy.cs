@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Anima2D;
 using Assets.Scripts.Game;
 using Assets.Scripts.Gun;
 using UnityEngine;
@@ -8,6 +10,7 @@ namespace Assets.Scripts.Enemy
     public class Enemy : MonoBehaviour
     {
         public EnemySoul EnemySoul;
+        public SpriteMeshInstance[] BodyParts;
 
         private int _health = 100;
         private Vector3 _homePortalPos;
@@ -25,6 +28,9 @@ namespace Assets.Scripts.Enemy
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (_health <= 0)
+                return;
+
             if (GameController.IsPlayerDead)
                 return;
 
@@ -63,7 +69,8 @@ namespace Assets.Scripts.Enemy
         private void DestroyEnemy()
         {
             GameController.OnRestartGame -= OnRestartGame;
-            Destroy(gameObject);
+            StartCoroutine(FadeOut());
+            Destroy(gameObject, 1f);
         }
 
         private static readonly Dictionary<Damage, int> DamageMap = new Dictionary<Damage, int>
@@ -72,5 +79,22 @@ namespace Assets.Scripts.Enemy
             {Damage.Medium, 40},
             {Damage.High, 100},
         };
+
+        private const float FadeOutSpeed = 0.05f;
+
+        private IEnumerator FadeOut()
+        {
+            for (var i = 1f; i > -FadeOutSpeed; i -= FadeOutSpeed)
+            {
+                foreach (var bodyPart in BodyParts)
+                {
+                    var color = bodyPart.color;
+                    color.a = i;
+                    bodyPart.color = color;
+                }
+
+                yield return new WaitForSeconds(FadeOutSpeed);
+            }
+        }
     }
 }
