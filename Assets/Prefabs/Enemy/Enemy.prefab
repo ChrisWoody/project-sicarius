@@ -96,6 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemySoul: {fileID: 114168732633244758, guid: 3e42602752f848e48b900228329d390a,
     type: 2}
+  BodyParts: []
+  DeathParticles: {fileID: 198521655149921678, guid: 3fec9e368848df443bb8eba73c0afa37,
+    type: 2}
 --- !u!114 &114661383116700062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,9 +123,6 @@ MonoBehaviour:
       m_Bits: 4294967295
     useGraphRaycasting: 0
   traversableTags: -1
-  traversableTagsCompatibility:
-    tagsChange: -1
-    tagsSet: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!212 &212837824386375882
 SpriteRenderer:
@@ -137,6 +137,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

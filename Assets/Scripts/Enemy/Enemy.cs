@@ -11,6 +11,7 @@ namespace Assets.Scripts.Enemy
     {
         public EnemySoul EnemySoul;
         public SpriteMeshInstance[] BodyParts;
+        public ParticleSystem DeathParticles;
 
         private int _health = 100;
         private Vector3 _homePortalPos;
@@ -70,6 +71,10 @@ namespace Assets.Scripts.Enemy
         {
             GameController.OnRestartGame -= OnRestartGame;
             StartCoroutine(FadeOut());
+            GetComponent<EnemyMovement>().enabled = false;
+            GetComponent<Animator>().enabled = false;
+            var particles = Instantiate(DeathParticles);
+            particles.GetComponent<Transform>().position = transform.position;
             Destroy(gameObject, 1f);
         }
 
@@ -80,7 +85,7 @@ namespace Assets.Scripts.Enemy
             {Damage.High, 100},
         };
 
-        private const float FadeOutSpeed = 0.05f;
+        private const float FadeOutSpeed = 0.1f;
 
         private IEnumerator FadeOut()
         {

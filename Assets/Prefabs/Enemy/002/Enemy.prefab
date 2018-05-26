@@ -1087,6 +1087,8 @@ MonoBehaviour:
   - {fileID: 114143221414935952}
   - {fileID: 114788192045617428}
   - {fileID: 114862080474505722}
+  DeathParticles: {fileID: 198399419623773980, guid: 885efd5d744b8f448aee334f8d003a2c,
+    type: 2}
 --- !u!114 &114667312010998476
 MonoBehaviour:
   m_ObjectHideFlags: 1
