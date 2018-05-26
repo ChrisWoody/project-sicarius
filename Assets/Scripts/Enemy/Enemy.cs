@@ -73,6 +73,7 @@ namespace Assets.Scripts.Enemy
             StartCoroutine(FadeOut());
             GetComponent<EnemyMovement>().enabled = false;
             GetComponent<Animator>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
             var particles = Instantiate(DeathParticles);
             particles.GetComponent<Transform>().position = transform.position;
             Destroy(gameObject, 1f);

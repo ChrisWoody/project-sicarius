@@ -20,6 +20,7 @@ namespace Assets.Scripts.Game
         {
             PreparePlayer();
             Player.gameObject.SetActive(true);
+            Player.Find("ShootingArmShoulder").gameObject.SetActive(false);
             Player.GetComponent<Animator>().SetBool("Dive", true);
             Player.GetComponent<Animator>().SetFloat("IntroSpeed", 0f);
         }
@@ -44,6 +45,7 @@ namespace Assets.Scripts.Game
                 Player.GetComponent<Animator>().SetFloat("vSpeed", 0f);
                 Player.GetComponent<Animator>().SetFloat("IntroSpeed", 0f); // need?
                 Player.GetComponent<Rigidbody2D>().isKinematic = false;
+                Player.Find("ShootingArmShoulder").gameObject.SetActive(true);
                 GameController.IntroFinished();
                 return;
             }

@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Game;
-//using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -7,16 +6,6 @@ namespace Assets.Scripts.Player
     public class PlayerRotateArm : MonoBehaviour
     {
         public Transform Crosshair;
-
-        private void Start()
-        {
-            GameController.OnShowMainMenu += OnShowMainMenu;
-        }
-
-        private void OnShowMainMenu()
-        {
-            transform.up = Vector3.up;
-        }
 
         private void Update()
         {

@@ -57947,7 +57947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d57908609ca53c419d33caa0219e39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartGameImmediatelly: 1
+  StartGameImmediatelly: 0
   PlayerIntroStart: {fileID: 425473069}
   PlayerIntroEnd: {fileID: 1970124260}
   Player: {fileID: 1048287895}
