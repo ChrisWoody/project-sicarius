@@ -1954,7 +1954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4453229675140628, guid: 2d03ba44c265c744bb252ff5cb5f9e39, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 137629117188273884, guid: 2d03ba44c265c744bb252ff5cb5f9e39,
         type: 2}
@@ -7829,6 +7829,7 @@ MonoBehaviour:
   GunShotImpactWorld: {fileID: 0}
   GunShotImpactEnemy: {fileID: 0}
   ShotMuzzleFlash: {fileID: 0}
+  GunUpgradeFlash: {fileID: 0}
 --- !u!1 &561617094
 GameObject:
   m_ObjectHideFlags: 0
@@ -8786,7 +8787,7 @@ Transform:
   - {fileID: 2021984345}
   - {fileID: 967066795}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617362654
 GameObject:
@@ -11743,6 +11744,8 @@ MonoBehaviour:
   GunShotImpactEnemy: {fileID: 114455893915921674, guid: cead9dae4eb99af48997b2295066e110,
     type: 2}
   ShotMuzzleFlash: {fileID: 4937827979291710, guid: aca74b5992e2e144793489947a031d7c,
+    type: 2}
+  GunUpgradeFlash: {fileID: 198029938519479180, guid: b9c83b22143a8ca49a7d039608696b03,
     type: 2}
 --- !u!1 &842041162
 GameObject:
@@ -43962,6 +43965,7 @@ MonoBehaviour:
   GunShotImpactWorld: {fileID: 0}
   GunShotImpactEnemy: {fileID: 0}
   ShotMuzzleFlash: {fileID: 0}
+  GunUpgradeFlash: {fileID: 0}
 --- !u!1 &1280404989
 GameObject:
   m_ObjectHideFlags: 0
@@ -44084,6 +44088,7 @@ MonoBehaviour:
     type: 2}
   ShotMuzzleFlash: {fileID: 4937827979291710, guid: aca74b5992e2e144793489947a031d7c,
     type: 2}
+  GunUpgradeFlash: {fileID: 0}
 --- !u!1 &1289942348
 GameObject:
   m_ObjectHideFlags: 0
@@ -44952,7 +44957,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4851388194024034, guid: 737c62a47983ce7438bb3a88c18b2f45, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1185517171765848, guid: 737c62a47983ce7438bb3a88c18b2f45, type: 2}
       propertyPath: m_IsActive
@@ -153040,7 +153045,7 @@ Transform:
   - {fileID: 829987972}
   - {fileID: 1075284460}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2126146099
 GameObject:

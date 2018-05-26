@@ -10,6 +10,7 @@ namespace Assets.Scripts.Gun
         public GunShotImpact GunShotImpactWorld;
         public GunShotImpact GunShotImpactEnemy;
         public Transform ShotMuzzleFlash;
+        public ParticleSystem GunUpgradeFlash;
 
         public GunType CurrentGunType { get; private set; }
 
@@ -117,6 +118,8 @@ namespace Assets.Scripts.Gun
             CurrentGunType = GunTypeFactory.GetNextGunType();
             _cooldownElapsed = 0f;
             _coolingDown = false;
+            var gunUpgradeFlash = Instantiate(GunUpgradeFlash);
+            gunUpgradeFlash.GetComponent<Transform>().position = transform.position;
             GameController.NotifyGunChange();
         }
 
