@@ -10,8 +10,11 @@
             GunType.Create(Firerate.Fast, Damage.Low, spread: Spread.None, autoFiring: true, shootThroughEverything: false),
             GunType.Create(Firerate.Medium, Damage.Medium, spread: Spread.None, autoFiring: false, shootThroughEverything: true),
             GunType.Create(Firerate.Slow, Damage.Low, spread: Spread.Wide, autoFiring: true, shootThroughEverything: false),
-            GunType.Create(Firerate.Slow, Damage.Medium, spread: Spread.None, autoFiring: true, shootThroughEverything: false),
-            GunType.Create(Firerate.Slow, Damage.Low, spread: Spread.Small, autoFiring: false, shootThroughEverything: true),
+            GunType.Create(Firerate.Slow, Damage.High, spread: Spread.None, autoFiring: true, shootThroughEverything: false),
+            GunType.Create(Firerate.Fast, Damage.Medium, spread: Spread.Small, autoFiring: true, shootThroughEverything: false),
+            GunType.Create(Firerate.Medium, Damage.High, spread: Spread.None, autoFiring: false, shootThroughEverything: true),
+            GunType.Create(Firerate.Fast, Damage.High, spread: Spread.Small, autoFiring: true, shootThroughEverything: false),
+            GunType.Create(Firerate.Fast, Damage.High, spread: Spread.Wide, autoFiring: true, shootThroughEverything: true),
         };
 
         private static int _currentGunTypeIndex = -1;
