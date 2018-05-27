@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Game;
+﻿using System;
+using Assets.Scripts.Game;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemy
@@ -20,9 +21,16 @@ namespace Assets.Scripts.Enemy
             {
                 if (_dead)
                     return;
-                    
-                DestoryOnRestart();
-                Destroy(gameObject);
+
+                try
+                {
+                    DestoryOnRestart();
+                    Destroy(gameObject);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+                }
             };
         }
 
