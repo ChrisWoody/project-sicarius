@@ -15,6 +15,20 @@ namespace Assets.Scripts.Enemy
         {
             if (!_gun)
                 _gun = FindObjectOfType<Gun.Gun>().transform;
+
+            GameController.OnRestartGame += () =>
+            {
+                if (_dead)
+                    return;
+                    
+                DestoryOnRestart();
+                Destroy(gameObject);
+            };
+        }
+
+        private static void DestoryOnRestart()
+        {
+            GameController.OnRestartGame -= DestoryOnRestart;
         }
 
         private void Update()
@@ -28,6 +42,7 @@ namespace Assets.Scripts.Enemy
                 _dead = true;
                 GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);
                 GameController.NotifySoulCollected();
+                DestoryOnRestart();
                 Destroy(gameObject, 0.5f);
             }
 

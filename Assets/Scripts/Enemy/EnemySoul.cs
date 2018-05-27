@@ -17,11 +17,11 @@ namespace Assets.Scripts.Enemy
         {
             GameController.OnRestartGame += () =>
             {
-                if (_pickedUp || _reachedPortal)
-                    return;
-                    
-                DestoryOnRestart();
-                Destroy(gameObject); // issue here with resetting game
+                if (!_pickedUp && !_reachedPortal)
+                    DestoryOnRestart();
+                
+                if (this != null)
+                    Destroy(gameObject); // issue here with resetting game
             };
             _ps = GetComponent<SpriteRenderer>();
         }
@@ -39,17 +39,17 @@ namespace Assets.Scripts.Enemy
             if (other.tag == "EnemyPortal")
             {
                 _reachedPortal = true;
-                DestroyEnemy();
+                DestroyEnemySoul();
             }
 
             if (other.GetComponent<Player.Player>())
             {
                 _pickedUp = true;
-                DestroyEnemy();
+                DestroyEnemySoul();
             }
         }
 
-        private void DestroyEnemy()
+        private void DestroyEnemySoul()
         {
             Instantiate(EnemySoulParticles, transform.position, transform.rotation);
             GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);

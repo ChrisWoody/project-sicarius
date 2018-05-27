@@ -15,13 +15,9 @@ namespace Assets.Scripts.Player
             GameController.OnRestartGame += () =>
             {
                 CurrentHealth = OriginalHealth;
+                StopAllCoroutines();
                 Time.timeScale = 1f;
             };
-        }
-
-        private void Update()
-        {
-            
         }
 
         public void Hit()
