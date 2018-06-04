@@ -25,7 +25,7 @@ namespace Assets.Scripts.Enemy
         private float lastRepath = -9999;
 
         private Animator _animator;
-        private float _speed = 3.5f;
+        private float _speed = EnemySpawner.DefaultEnemySpeed;
 
         private void Awake()
         {
@@ -86,7 +86,7 @@ namespace Assets.Scripts.Enemy
                 _animator.SetBool("Run", true);
                 _animator.SetBool("JumpUp", false);
                 _animator.SetBool("JumpDown", false);
-                _speed = 3.5f;
+                _speed = EnemySpawner.DefaultEnemySpeed;
             }
         }
 

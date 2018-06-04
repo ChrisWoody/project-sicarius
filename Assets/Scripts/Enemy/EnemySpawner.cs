@@ -10,6 +10,8 @@ namespace Assets.Scripts.Enemy
         public Transform[] Spawners;
         private float _spawnFrequency = 2f;
 
+        public static float DefaultEnemySpeed = 3.5f;
+
         // Something like this, could be a calculated thing instead of an explicit map
         private readonly Dictionary<int, float> _enemyCountToFrequencyMap = new Dictionary<int, float>()
         {
@@ -21,7 +23,7 @@ namespace Assets.Scripts.Enemy
         private float _elapsed;
         private int _spawnedEnemies;
         private int _currentNumberOfEnemies;
-        private const int TotalCurrentEnemies = 10;
+        private int _totalCurrentEnemies = 10;
 
         private void Awake()
         {
@@ -51,7 +53,7 @@ namespace Assets.Scripts.Enemy
             {
                 _elapsed = 0f;
 
-                if (_currentNumberOfEnemies >= TotalCurrentEnemies)
+                if (_currentNumberOfEnemies >= _totalCurrentEnemies)
                     return;
 
                 _currentNumberOfEnemies++;
@@ -78,6 +80,12 @@ namespace Assets.Scripts.Enemy
             if (minKey != 0)
             {
                 _spawnFrequency = _enemyCountToFrequencyMap[minKey];
+            }
+
+            if (_spawnedEnemies > 100)
+            {
+                DefaultEnemySpeed = 7.5f;
+                _totalCurrentEnemies = 20;
             }
         }
     }

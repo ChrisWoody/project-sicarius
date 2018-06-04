@@ -6,17 +6,21 @@ namespace Assets.Scripts.Player
 {
     public class Player : MonoBehaviour
     {
+        public Transform PlayerHitPanel;
+
         public const int OriginalHealth = 3;
         private const float FadeOutSeconds = 0.1f;
         public int CurrentHealth { get; private set; } = OriginalHealth;
 
         private void Awake()
         {
+            PlayerHitPanel.gameObject.SetActive(false);
             GameController.OnRestartGame += () =>
             {
                 CurrentHealth = OriginalHealth;
                 StopAllCoroutines();
                 Time.timeScale = 1f;
+                PlayerHitPanel.gameObject.SetActive(false);
             };
         }
 
@@ -29,7 +33,11 @@ namespace Assets.Scripts.Player
             {
                 GameController.NotifyPlayerKilled();
                 StartCoroutine(FadeOutTrail());
+                return;
             }
+
+            PlayerHitPanel.gameObject.SetActive(true);
+            StartCoroutine(HidePlayerHitPanel());
         }
 
         private static IEnumerator FadeOutTrail()
@@ -42,6 +50,12 @@ namespace Assets.Scripts.Player
 
                 yield return new WaitForSeconds(FadeOutSeconds);
             }
+        }
+
+        private IEnumerator HidePlayerHitPanel()
+        {
+            yield return new WaitForSeconds(0.2f);
+            PlayerHitPanel.gameObject.SetActive(false);
         }
     }
 }
