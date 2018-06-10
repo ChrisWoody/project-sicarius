@@ -1,1 +1,2 @@
 "C:\Program Files\Unity\Editor\Unity.exe" -quit -batchmode -buildWindows64Player "C:\builds\project-sicarius\win64\project-sicarius-win64.exe"
+7z a "C:\builds\project-sicarius\win64\project-sicarius-win.zip" "C:\builds\project-sicarius\win64\*" -r

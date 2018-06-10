@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Project Sicarius</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body style="background-color:lightgrey">
+    <a href="https://github.com/ChrisWoody/project-sicarius"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <div class="webgl-content">
+      <h1 style="font-family:Verdana, Geneva, Tahoma, sans-serif">Project Sicarius</h1>
+      <p style="font-family:Verdana, Geneva, Tahoma, sans-serif">A short game made by Chris Wood. Learn more about the game and even contribute <a href="https://github.com/ChrisWoody/project-sicarius" target="_blank">here</a>.</p>
+      <p style="font-family:Verdana, Geneva, Tahoma, sans-serif">Have Windows? You can download and play the Windows build from <a href="https://chriswood.blob.core.windows.net/project-sicarius/project-sicarius-win.zip">here</a>.</p>
+      <br />
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">Play in fullscreen!</div>
+      </div>
+    </div>
+  </body>
+</html>
