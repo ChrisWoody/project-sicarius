@@ -4,11 +4,10 @@ Project Sicarius is a 2D video game that sees you control an angel tasked with k
 
 ## Play the game!
 
-You can play the game in your browser (WebGL) from here:  
-https://chriswoody.github.io/project-sicarius-build/
+You can play the game in your browser (WebGL) from here: https://chriswoody.github.io/project-sicarius-build/  
 **Note:** Chrome will be slow/choppy unless you have 'hardware acceleration' turned on
 
-Alternatively, download and unzip this to play the Windows build:
+Alternatively, download and unzip this to play the Windows build:  
 https://chriswoody.github.io/project-sicarius-build/project-sicarius-win.zip
 
 
